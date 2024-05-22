@@ -1,0 +1,7 @@
+<section fxLayout="row" fxLayoutAlign="center center">
+  <mat-list fxLayout="column">
+    @for (item of availableNotes; track $index) {
+    <note [note]="item"></note>
+    }
+  </mat-list>
+</section>
