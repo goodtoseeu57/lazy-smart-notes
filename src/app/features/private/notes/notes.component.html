@@ -1,7 +1,10 @@
-<section fxLayout="row" fxLayoutAlign="center center">
-  <mat-list fxLayout="column">
-    @for (item of availableNotes; track $index) {
-    <note [note]="item"></note>
+<mat-list fxLayout="row" fxLayoutAlign="center center">
+  <div fxLayout="column">
+    @for (item of availableNotes$ | async; track $index) {
+    <note [note]="item" (showedNote)="onShowedNote($event)"></note>
+    } @empty {
+    <p>No results</p>
     }
-  </mat-list>
-</section>
+
+  </div>
+</mat-list>

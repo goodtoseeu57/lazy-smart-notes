@@ -4,7 +4,6 @@ import { MatCardModule } from "@angular/material/card";
 import {
   MatList,
   MatListItem,
-  MatListItemIcon
 
 } from "@angular/material/list"
 import { FlexLayoutModule } from '@angular/flex-layout';
