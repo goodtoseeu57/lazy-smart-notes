@@ -1,10 +1,10 @@
 <mat-list fxLayout="row" fxLayoutAlign="center center">
-  <div fxLayout="column">
+  <div *ngIf="isLoading$ | async; else showNotes">Loading.....</div>
+  <ng-template #showNotes>
     @for (item of availableNotes$ | async; track $index) {
-    <note [note]="item" (showedNote)="onShowedNote($event)"></note>
+      <note [note]="item" (showedNote)="onShowedNote($event)"></note>
     } @empty {
-    <p>No results</p>
+      <p>No results</p>
     }
-
-  </div>
+  </ng-template>
 </mat-list>

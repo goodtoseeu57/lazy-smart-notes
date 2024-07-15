@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'app-private',
   templateUrl: './private.component.html',
-  styleUrl: './private.component.scss'
+  styleUrl: './private.component.scss',
 })
 export class PrivateComponent {
-  protected name = 'private component'
+  public name = 'private component'
 }

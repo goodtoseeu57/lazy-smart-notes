@@ -1,10 +1,14 @@
-<mat-list-item (click)="showNote(note)" class="note">
-  <p> {{note.title}} </p>
-  <p> {{note.description}}</p>
+@if (note) {
+  <mat-list-item (click)="showNote(note)" class="note">
+    <p>{{ note.title }}</p>
+    <p>{{ note.description }}</p>
 
-  @if (note.hashCode) {
-  {{note.hashCode}}
-  } @else {
-  <p> no hashcode</p>
-  }
-</mat-list-item>
+    @if (note.hashCode) {
+      {{ note.hashCode }}
+    } @else {
+      <p>no hashcode</p>
+    }
+  </mat-list-item>
+} @else {
+  <p>No note selected</p>
+}
