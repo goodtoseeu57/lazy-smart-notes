@@ -3,7 +3,7 @@ import { Note, notes } from './notes'
 import { NoteService } from './services/note.service'
 import { AppStateInterface } from '../../../types/appState.interface'
 import { Store, select } from '@ngrx/store'
-import { concatMap, delay, from, Observable, of, take } from 'rxjs'
+import { concatMap, delay, from, Observable, of, switchMap, take } from 'rxjs'
 import {
   errorSelector,
   isLoadingSelector,
@@ -45,11 +45,16 @@ export class NotesComponent implements OnInit {
 
     this.data$
       .pipe(
-        concatMap((messages: string[]) =>
-          from(messages).pipe(
-            concatMap((message) => of(message).pipe(delay(1000))), // 1-second delay between each message
-          ),
-        ),
+        switchMap((messages: string[] | null) => {
+          // Only proceed if the messages are not null or undefined
+          if (messages != null) {
+            return from(messages).pipe(
+              concatMap((message) => of(message).pipe(delay(1000))), // Add a delay between each message
+            )
+          } else {
+            return of() // Return an empty observable if messages are null/undefined
+          }
+        }),
       )
       .subscribe((message) => {
         this.messages = [...this.messages, message] // Append each message to the array
