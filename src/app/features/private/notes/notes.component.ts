@@ -65,6 +65,11 @@ export class NotesComponent implements OnInit {
     console.log(note)
   }
 
+  isYoutubeUrl(url: string): boolean {
+    const youtubeRegex = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/.+/
+    return youtubeRegex.test(url)
+  }
+
   justAnotherNote() {
     confirm('Are you sure?')
   }
