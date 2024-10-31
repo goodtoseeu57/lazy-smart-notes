@@ -60,7 +60,7 @@ export class NotesComponent implements OnInit {
         this.messages = [...this.messages, message] // Append each message to the array
       })
   }
-
+  // ^https?:\/\/(.*\.)?(example1\.com|example2\.com)$
   onShowedNote(note: Note) {
     console.log(note)
   }
