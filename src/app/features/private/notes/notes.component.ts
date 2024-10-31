@@ -61,6 +61,7 @@ export class NotesComponent implements OnInit {
       })
   }
   // ^https?:\/\/(.*\.)?(example1\.com|example2\.com)$
+
   onShowedNote(note: Note) {
     console.log(note)
   }
